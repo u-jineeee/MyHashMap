@@ -87,4 +87,24 @@ public class MyHashMap<K, V> {
 
         return previous;
     }
+
+    public boolean containsKey(K key) {
+        for(int i = 0; i < size; i++) {
+            if (keys[i].equals(key)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean containsValue(V value) {
+        for(int i = 0; i < size; i++) {
+            if (values[i].equals(value)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

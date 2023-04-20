@@ -3,8 +3,7 @@ package com.ll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MyHashMapTest {
     private MyHashMap<String, Integer> map;
@@ -50,5 +49,21 @@ public class MyHashMapTest {
         assertEquals(Integer.valueOf(1), map.remove("Key1"));
         assertNull(map.remove("Key3"));
         assertEquals(1, map.size());
+    }
+
+    @Test
+    void testContainsKey() {
+        map.put("Key1", 1);
+        map.put("Key2", 2);
+        assertTrue(map.containsKey("Key1"));
+        assertFalse(map.containsKey("Key3"));
+    }
+
+    @Test
+    void testContainsValue() {
+        map.put("Key1", 1);
+        map.put("Key2", 2);
+        assertTrue(map.containsValue(1));
+        assertFalse(map.containsValue(3));
     }
 }
