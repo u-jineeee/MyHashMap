@@ -37,4 +37,54 @@ public class MyHashMap<K, V> {
     public int size() {
         return size;
     }
+
+    public V get(K key) {
+        for(int i = 0; i < size; i++){
+            if(keys[i].equals(key)) {
+                return (V) values[i];
+            }
+        }
+
+        return null;
+    }
+
+    public V remove(K key) {
+        Object[] newKeys = new Object[size - 1];
+        Object[] newValues = new Object[size - 1];
+
+        V previous = null;
+        int index = -1;
+
+        for(int i = 0; i < size; i++) {
+            if (keys[i].equals(key)) {
+                index = i;
+                previous = (V) values[index];
+                break;
+            }
+        }
+
+        if(previous == null)
+            return null;
+
+        for(int i = 0; i < index; i++) {
+            if(keys[i].equals(key)) {
+                break;
+            }
+            newKeys[i] = keys[i];
+            newValues[i] = values[i];
+        }
+
+        if(index > -1) {
+            for (int i = index + 1; i < size; i++) {
+                newKeys[i - 1] = keys[i];
+                newValues[i - 1] = values[i];
+            }
+        }
+
+        keys = newKeys;
+        values = newValues;
+        size--;
+
+        return previous;
+    }
 }
