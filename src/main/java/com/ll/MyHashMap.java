@@ -107,4 +107,17 @@ public class MyHashMap<K, V> {
 
         return false;
     }
+
+    public void clear() {
+        keys = new Object[0];
+        values = new Object[0];
+        size = 0;
+    }
+
+    public boolean isEmpty() {
+        if(size == 0 || keys == null && values == null)
+            return true;
+
+        return false;
+    }
 }
